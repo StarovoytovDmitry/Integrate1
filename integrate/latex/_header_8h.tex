@@ -1,0 +1,101 @@
+\hypertarget{_header_8h}{}\section{Header.\+h File Reference}
+\label{_header_8h}\index{Header.\+h@{Header.\+h}}
+
+
+Заголовочный файл с описанием функций  
+
+
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef double($\ast$ {\bfseries function}) (double)\hypertarget{_header_8h_a0a87812e9bc46ef8d4ae15ec22e9d554}{}\label{_header_8h_a0a87812e9bc46ef8d4ae15ec22e9d554}
+
+\item 
+typedef double($\ast$ {\bfseries dfunction}) (double, double)\hypertarget{_header_8h_af2cffd8edfe76b1a667474442e8abb5c}{}\label{_header_8h_af2cffd8edfe76b1a667474442e8abb5c}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{_header_8h_a442ce5da427a2a8927f9fee5d55bed44}{integral\+\_\+pram} (function f, double a, double b, unsigned step\+\_\+count)
+\begin{DoxyCompactList}\small\item\em rectangles \end{DoxyCompactList}\item 
+double \hyperlink{_header_8h_a864fb15dd1f73e3fc2b3cf0cc18354bb}{integral\+\_\+trap} (function f, double a, double b, unsigned step\+\_\+count)
+\begin{DoxyCompactList}\small\item\em trapeze \end{DoxyCompactList}\item 
+double \hyperlink{_header_8h_a58180d08919889b0edd98aca322b29cb}{integral\+\_\+simp} (function f, double a, double b, unsigned step\+\_\+count)
+\begin{DoxyCompactList}\small\item\em simpson \end{DoxyCompactList}\item 
+double \hyperlink{_header_8h_a8e5b7214541bc4cbf100fdaa512d5157}{integral\+\_\+monte} (function f, double a, double b, unsigned step\+\_\+count)
+\begin{DoxyCompactList}\small\item\em monte-\/karlo \end{DoxyCompactList}\item 
+void \hyperlink{_header_8h_a0bfe57db004c7d569a34a7e192ad625c}{integral\+\_\+runge4} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)\hypertarget{_header_8h_a0bfe57db004c7d569a34a7e192ad625c}{}\label{_header_8h_a0bfe57db004c7d569a34a7e192ad625c}
+
+\begin{DoxyCompactList}\small\item\em runge 4o \end{DoxyCompactList}\item 
+void \hyperlink{_header_8h_aa00382ea8791a5c37aad5ff4a65369e1}{integral\+\_\+runge5} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)\hypertarget{_header_8h_aa00382ea8791a5c37aad5ff4a65369e1}{}\label{_header_8h_aa00382ea8791a5c37aad5ff4a65369e1}
+
+\begin{DoxyCompactList}\small\item\em runge 5o \end{DoxyCompactList}\item 
+void \hyperlink{_header_8h_acfff4de9ef4c06e7c81a318a580461be}{integral\+\_\+eiler} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)\hypertarget{_header_8h_acfff4de9ef4c06e7c81a318a580461be}{}\label{_header_8h_acfff4de9ef4c06e7c81a318a580461be}
+
+\begin{DoxyCompactList}\small\item\em eiler \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Заголовочный файл с описанием функций 
+
+Данный файл содержит в себе определения основных функций, используемых в демонстрационной программе 
+
+\subsection{Function Documentation}
+\index{Header.\+h@{Header.\+h}!integral\+\_\+monte@{integral\+\_\+monte}}
+\index{integral\+\_\+monte@{integral\+\_\+monte}!Header.\+h@{Header.\+h}}
+\subsubsection[{\texorpdfstring{integral\+\_\+monte(function f, double a, double b, unsigned step\+\_\+count)}{integral_monte(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+monte (
+\begin{DoxyParamCaption}
+\item[{function}]{f, }
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{unsigned}]{step\+\_\+count}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8h_a8e5b7214541bc4cbf100fdaa512d5157}{}\label{_header_8h_a8e5b7214541bc4cbf100fdaa512d5157}
+
+
+monte-\/karlo 
+
+метод монте карло \index{Header.\+h@{Header.\+h}!integral\+\_\+pram@{integral\+\_\+pram}}
+\index{integral\+\_\+pram@{integral\+\_\+pram}!Header.\+h@{Header.\+h}}
+\subsubsection[{\texorpdfstring{integral\+\_\+pram(function f, double a, double b, unsigned step\+\_\+count)}{integral_pram(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+pram (
+\begin{DoxyParamCaption}
+\item[{function}]{f, }
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{unsigned}]{step\+\_\+count}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8h_a442ce5da427a2a8927f9fee5d55bed44}{}\label{_header_8h_a442ce5da427a2a8927f9fee5d55bed44}
+
+
+rectangles 
+
+метод прямоугльников \index{Header.\+h@{Header.\+h}!integral\+\_\+simp@{integral\+\_\+simp}}
+\index{integral\+\_\+simp@{integral\+\_\+simp}!Header.\+h@{Header.\+h}}
+\subsubsection[{\texorpdfstring{integral\+\_\+simp(function f, double a, double b, unsigned step\+\_\+count)}{integral_simp(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+simp (
+\begin{DoxyParamCaption}
+\item[{function}]{f, }
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{unsigned}]{step\+\_\+count}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8h_a58180d08919889b0edd98aca322b29cb}{}\label{_header_8h_a58180d08919889b0edd98aca322b29cb}
+
+
+simpson 
+
+метод симпсона(парабол) \index{Header.\+h@{Header.\+h}!integral\+\_\+trap@{integral\+\_\+trap}}
+\index{integral\+\_\+trap@{integral\+\_\+trap}!Header.\+h@{Header.\+h}}
+\subsubsection[{\texorpdfstring{integral\+\_\+trap(function f, double a, double b, unsigned step\+\_\+count)}{integral_trap(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+trap (
+\begin{DoxyParamCaption}
+\item[{function}]{f, }
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{unsigned}]{step\+\_\+count}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8h_a864fb15dd1f73e3fc2b3cf0cc18354bb}{}\label{_header_8h_a864fb15dd1f73e3fc2b3cf0cc18354bb}
+
+
+trapeze 
+
+метод трапеций 

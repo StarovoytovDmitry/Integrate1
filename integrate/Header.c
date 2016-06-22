@@ -10,9 +10,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+/*!
+ \file
+ \brief Файл с реализацией функций
+ 
+ Данный файл содержит в себе реализацию основных
+ функций, используемых в демонстрационной программе
+ */
+///rectangles
+/**
+ метод прямоугльников
+ */
 double integral_pram(function f, double a, double b, unsigned step_count)
 {
     double S=.0;
+    if (a>b) {double c=b;b=a;a=c;}
     if (0 == step_count) return S;
     const double h=(b-a)/(1.0*step_count);
     for(int i=0;i<step_count-1;i++)
@@ -23,9 +35,13 @@ double integral_pram(function f, double a, double b, unsigned step_count)
     S=h*S;
     return S;
 }
-
+///trapeze
+/**
+ метод трапеций
+ */
 double integral_trap(function f, double a, double b, unsigned step_count)
 {
+    if (a>b) {double c=b;b=a;a=c;}
     double sum = .0;
     if (0 == step_count) return sum;
     
@@ -37,9 +53,13 @@ double integral_trap(function f, double a, double b, unsigned step_count)
     sum *= step;
     return sum;
 }
-
+///simpson
+/**
+ метод симпсона(парабол)
+ */
 double integral_simp(function f, double a, double b, unsigned step_count)
 {
+    if (a>b) {double c=b;b=a;a=c;}
     double sum,x0,x1;
     if (0 == step_count) return sum;
     const double h = (b - a)/(1.0*step_count);
@@ -55,9 +75,13 @@ double integral_simp(function f, double a, double b, unsigned step_count)
     }
     return (h/6)*sum;
 }
-
+///monte-karlo
+/**
+ метод монте карло
+ */
 double integral_monte(function f, double a, double b, unsigned step_count)
 {
+    if (a>b) {double c=b;b=a;a=c;}
     double g,x,s = .0;
     const double k=b-a;
     srand(time(NULL));
@@ -68,9 +92,10 @@ double integral_monte(function f, double a, double b, unsigned step_count)
     }
     return ((1.0/step_count)*k*s);
 }
-
+///runge 4o
 void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
+    if (x0>x1) {double c=x1;x1=x0;x0=c;}
     double k1,k2,k3,k4;
     const int n=(x1-x0)/h;
     int i=0;
@@ -88,9 +113,10 @@ void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, do
     *x=x0;
     *y=y0;
 }
-
+///runge 5o
 void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
+    if (x0>x1) {double c=x1;x1=x0;x0=c;}
     double k1,k2,k3,k4,k5;
     const int n=(x1-x0)/h;
     int i=0;
@@ -109,16 +135,16 @@ void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, do
     *x=x0;
     *y=y0;
 }
-
+///eiler
 void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
+    if (x0>x1) {double c=x1;x1=x0;x0=c;}
     const int n=(x1-x0)/h;
     for (int i=x0;i<n;i++)
     {
         y0 += h * f(x0, y0);
         x0 += h;
     }
-    //x0=i;
     *x=x0;
     *y=y0;
 }

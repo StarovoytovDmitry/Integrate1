@@ -8,6 +8,13 @@
 
 #ifndef Header_h
 #define Header_h
+/*!
+ \file
+ \brief Заголовочный файл с описанием функций
+ 
+ Данный файл содержит в себе определения основных
+ функций, используемых в демонстрационной программе
+ */
 typedef double(*function)(double);
 typedef double(*dfunction)(double, double);
 double integral_pram(function f, double a, double b, unsigned step_count);
