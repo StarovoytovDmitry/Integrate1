@@ -69,11 +69,14 @@ double integral_monte(function f, double a, double b, unsigned step_count)
     return ((1.0/step_count)*k*s);
 }
 
-void integral_runge4(dfunction f, double x0, double y0, double* x, double* y, double h)
+void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
-    double k1,k2,k3,k4,i=0;
-    for(i=x0;i<=y0;i+=h)
+    double k1,k2,k3,k4;
+    const int n=(x1-x0)/h;
+    int i=0;
+    for(i=x0;i<n;i++)
     {
+        x0=i*h;
         k1=h*f(x0, y0);
         k2=h*f(x0+h/2, y0+k1/2);
         k3=h*f(x0+h/2, y0+k2/2);
@@ -81,26 +84,41 @@ void integral_runge4(dfunction f, double x0, double y0, double* x, double* y, do
         double d=(k1+2*k2+2*k3+k4)/6;
         y0=y0+d;
     }
-    x0=i;
+    x0=i*h;
     *x=x0;
     *y=y0;
 }
 
-void integral_runge5(dfunction f, double x0, double y0, double* x, double* y, double h)
+void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
-    double k1,k2,k3,k4,k5,k6,i;
-    for(i=x0;i<=y0;i+=h)
+    double k1,k2,k3,k4,k5;
+    const int n=(x1-x0)/h;
+    int i=0;
+    for(i=x0;i<n;i++)
     {
-        k1=h*f(x0, y0);
-        k2=h*f(x0+h/4, y0+k1/4);
-        k3=h*f(x0+3*h/8, y0+3*k1/32+9*k2/32);
-        k4=h*f(x0+12*h/13, y0+1932*k1/2197-7200*k2/2197+7296*k3/2197);
-        k5=h*f(x0+h, y0+439*k1/316-8*k2+3680*k3/513-845*k4/4104);
-        k6=h*f(x0+h/2, y0-8*k1/27+2*k2-3544*k3/2565+1859*k4/4104-11*k5/40);
-        double d=(16*k1/135+6656*k3/12825+28561*k4/56430+9*k5/50+2*k6/55);
+        x0=i*h;
+        k1=h*f(x0, y0)/3;
+        k2=h*f(x0+h/3, y0+k1)/3;
+        k3=h*f(x0+h/3, y0+k1/2+k2/2)/3;
+        k4=h*f(x0+h/2, y0+3*k1/8+9*k3/8)/3;
+        k5=h*f(x0+h, y0+3*k1/2-9*k3/2+6*k4)/3;
+        double d=(k1+4*k4+k5)/2;
         y0=y0+d;
     }
-    x0=i;
+    x0=i*h;
+    *x=x0;
+    *y=y0;
+}
+
+void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
+{
+    const int n=(x1-x0)/h;
+    for (int i=x0;i<n;i++)
+    {
+        y0 += h * f(x0, y0);
+        x0 += h;
+    }
+    //x0=i;
     *x=x0;
     *y=y0;
 }
