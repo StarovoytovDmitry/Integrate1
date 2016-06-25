@@ -130,11 +130,10 @@ void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, dou
     *x=x0;
     *y=y0;
 }
-double integral_pram_inf(function f, double a, double b, double eps)
+double integral_pram_inf(function f, double a, double b, double h, double eps)
 {
     double dS=eps,S=.0,s1=.0,a1=a;
-    if (0 == eps) return S;
-    const double h=0.1;
+    if (eps == 0) return S;
     int i=1;
     while ((dS>=eps)&&(a1>=a))
     {
@@ -147,4 +146,38 @@ double integral_pram_inf(function f, double a, double b, double eps)
     }
     S=h*S;
     return S;
+}
+double integral_trap_inf(function f, double a, double b, double h, double eps)
+{
+    double sum = .0,a1=a,dS=eps, s1=.0;
+    if (eps == 0) return sum;
+    int i=1;
+    double x = .0;
+    while ((dS>=eps)&&(a1>=a))
+    {
+        x=a+i*h;
+        s1=sum;
+        sum += f (x);
+        dS=fabs(sum-s1);
+        a1=a1+h;
+        i++;
+    }
+    sum += (f(a) + f(x)) / 2;
+    sum *= h;
+    return sum;
+}
+double integral_simp_inf(function f, double a, double b, double h, double eps)
+{
+    double sum = 0,x0 = a,x1,dS=eps, s1=.0;
+    if (eps == 0) return sum;
+    x1 = a + h;
+    while (dS>=eps)
+    {
+        s1=sum;
+        sum += f(x0) + 4*f(x0 + h/2) + f(x1);
+        dS=fabs(sum-s1);
+        x0 += h;
+        x1 += h;
+    }
+    return (h/6)*sum;
 }
