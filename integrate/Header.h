@@ -18,6 +18,7 @@
 typedef double(*function)(double);
 typedef double(*dfunction)(double, double);
 double integral_pram(function f, double a, double b, unsigned step_count);
+double integral_pram_inf(function f, double a, double b, double eps);
 double integral_trap(function f, double a, double b, unsigned step_count);
 double integral_simp(function f, double a, double b, unsigned step_count);
 double integral_monte(function f, double a, double b, unsigned step_count);

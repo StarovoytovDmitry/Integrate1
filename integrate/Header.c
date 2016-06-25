@@ -10,16 +10,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 /*!
  \file
  \brief Файл с реализацией функций
  
  Данный файл содержит в себе реализацию основных
  функций, используемых в демонстрационной программе
- */
-///rectangles
-/**
- метод прямоугльников
  */
 double integral_pram(function f, double a, double b, unsigned step_count)
 {
@@ -35,10 +32,6 @@ double integral_pram(function f, double a, double b, unsigned step_count)
     S=h*S;
     return S;
 }
-///trapeze
-/**
- метод трапеций
- */
 double integral_trap(function f, double a, double b, unsigned step_count)
 {
     if (a>b) {double c=b;b=a;a=c;}
@@ -53,10 +46,6 @@ double integral_trap(function f, double a, double b, unsigned step_count)
     sum *= step;
     return sum;
 }
-///simpson
-/**
- метод симпсона(парабол)
- */
 double integral_simp(function f, double a, double b, unsigned step_count)
 {
     if (a>b) {double c=b;b=a;a=c;}
@@ -75,10 +64,6 @@ double integral_simp(function f, double a, double b, unsigned step_count)
     }
     return (h/6)*sum;
 }
-///monte-karlo
-/**
- метод монте карло
- */
 double integral_monte(function f, double a, double b, unsigned step_count)
 {
     if (a>b) {double c=b;b=a;a=c;}
@@ -92,7 +77,6 @@ double integral_monte(function f, double a, double b, unsigned step_count)
     }
     return ((1.0/step_count)*k*s);
 }
-///runge 4o
 void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
     if (x0>x1) {double c=x1;x1=x0;x0=c;}
@@ -113,7 +97,6 @@ void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, do
     *x=x0;
     *y=y0;
 }
-///runge 5o
 void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
     if (x0>x1) {double c=x1;x1=x0;x0=c;}
@@ -135,7 +118,6 @@ void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, do
     *x=x0;
     *y=y0;
 }
-///eiler
 void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
     if (x0>x1) {double c=x1;x1=x0;x0=c;}
@@ -147,4 +129,22 @@ void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, dou
     }
     *x=x0;
     *y=y0;
+}
+double integral_pram_inf(function f, double a, double b, double eps)
+{
+    double dS=eps,S=.0,s1=.0,a1=a;
+    if (0 == eps) return S;
+    const double h=0.1;
+    int i=1;
+    while ((dS>=eps)&&(a1>=a))
+    {
+        double x=a+i*h;
+        s1=S;
+        S=S+f(x);
+        dS=fabs(S-s1);
+        a1=a1+h;
+        i++;
+    }
+    S=h*S;
+    return S;
 }
