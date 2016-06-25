@@ -27,4 +27,5 @@ double integral_monte(function f, double a, double b, unsigned step_count);
 void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, double* y, double h);
 void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, double* y, double h);
 void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h);
+void mnk(int n, double *x, double *y, double *a_res, double *b_res);
 #endif /* Header_h */

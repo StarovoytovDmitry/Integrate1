@@ -6,11 +6,6 @@
 //  Copyright © 2016 Дмитрий. All rights reserved.
 //
 
-#include "Header.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <math.h>
 /*!
  \file
  \brief Файл с реализацией функций
@@ -18,6 +13,13 @@
  Данный файл содержит в себе реализацию основных
  функций, используемых в демонстрационной программе
  */
+
+#include "Header.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+
 double integral_pram(function f, double a, double b, unsigned step_count)
 {
     double S=.0;
@@ -180,4 +182,20 @@ double integral_simp_inf(function f, double a, double b, double h, double eps)
         x1 += h;
     }
     return (h/6)*sum;
+}
+void mnk(int n, double *x, double *y, double *a_res, double *b_res)
+{
+    double xy_sum=.0,x2_sum=.0,x_sum=.0,y_sum=.0;
+    double a,b;
+    for (int i=0; i<5; i++)
+    {
+        x_sum += x[i];
+        y_sum += y[i];
+        xy_sum += x[i]*y[i];
+        x2_sum += x[i]*x[i];
+    }
+    a=(n*xy_sum-x_sum*y_sum)/(n*x2_sum-x_sum*x_sum);
+    b=(y_sum-a*x_sum)/n;
+    *a_res=a;
+    *b_res=b;
 }
