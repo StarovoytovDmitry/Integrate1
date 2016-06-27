@@ -9,34 +9,79 @@
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
 {\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \hyperlink{_header_8c_a442ce5da427a2a8927f9fee5d55bed44}{integral\+\_\+pram} (function f, double a, double b, unsigned step\+\_\+count)
-\begin{DoxyCompactList}\small\item\em rectangles \end{DoxyCompactList}\item 
+\item 
 double \hyperlink{_header_8c_a864fb15dd1f73e3fc2b3cf0cc18354bb}{integral\+\_\+trap} (function f, double a, double b, unsigned step\+\_\+count)
-\begin{DoxyCompactList}\small\item\em trapeze \end{DoxyCompactList}\item 
+\item 
 double \hyperlink{_header_8c_a58180d08919889b0edd98aca322b29cb}{integral\+\_\+simp} (function f, double a, double b, unsigned step\+\_\+count)
-\begin{DoxyCompactList}\small\item\em simpson \end{DoxyCompactList}\item 
+\item 
 double \hyperlink{_header_8c_a8e5b7214541bc4cbf100fdaa512d5157}{integral\+\_\+monte} (function f, double a, double b, unsigned step\+\_\+count)
-\begin{DoxyCompactList}\small\item\em monte-\/karlo \end{DoxyCompactList}\item 
-void \hyperlink{_header_8c_a0bfe57db004c7d569a34a7e192ad625c}{integral\+\_\+runge4} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)\hypertarget{_header_8c_a0bfe57db004c7d569a34a7e192ad625c}{}\label{_header_8c_a0bfe57db004c7d569a34a7e192ad625c}
+\item 
+void \hyperlink{_header_8c_a0bfe57db004c7d569a34a7e192ad625c}{integral\+\_\+runge4} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)
+\item 
+void \hyperlink{_header_8c_aa00382ea8791a5c37aad5ff4a65369e1}{integral\+\_\+runge5} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)
+\item 
+void \hyperlink{_header_8c_acfff4de9ef4c06e7c81a318a580461be}{integral\+\_\+eiler} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)
+\item 
+double \hyperlink{_header_8c_a81d4985d168f2499cfade4bf05d57c6e}{integral\+\_\+pram\+\_\+inf} (function f, double a, double b, double h, double eps)\hypertarget{_header_8c_a81d4985d168f2499cfade4bf05d57c6e}{}\label{_header_8c_a81d4985d168f2499cfade4bf05d57c6e}
 
-\begin{DoxyCompactList}\small\item\em runge 4o \end{DoxyCompactList}\item 
-void \hyperlink{_header_8c_aa00382ea8791a5c37aad5ff4a65369e1}{integral\+\_\+runge5} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)\hypertarget{_header_8c_aa00382ea8791a5c37aad5ff4a65369e1}{}\label{_header_8c_aa00382ea8791a5c37aad5ff4a65369e1}
+\begin{DoxyCompactList}\small\item\em Дополнение для бесконечных пределов \end{DoxyCompactList}\item 
+double \hyperlink{_header_8c_a991abd1319b4ccaaadc2197b4b8ee895}{integral\+\_\+trap\+\_\+inf} (function f, double a, double b, double h, double eps)\hypertarget{_header_8c_a991abd1319b4ccaaadc2197b4b8ee895}{}\label{_header_8c_a991abd1319b4ccaaadc2197b4b8ee895}
 
-\begin{DoxyCompactList}\small\item\em runge 5o \end{DoxyCompactList}\item 
-void \hyperlink{_header_8c_acfff4de9ef4c06e7c81a318a580461be}{integral\+\_\+eiler} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)\hypertarget{_header_8c_acfff4de9ef4c06e7c81a318a580461be}{}\label{_header_8c_acfff4de9ef4c06e7c81a318a580461be}
+\begin{DoxyCompactList}\small\item\em Дополнение для бесконечных пределов \end{DoxyCompactList}\item 
+double \hyperlink{_header_8c_ae2067b60cbad31c882af8308b4a93466}{integral\+\_\+simp\+\_\+inf} (function f, double a, double b, double h, double eps)\hypertarget{_header_8c_ae2067b60cbad31c882af8308b4a93466}{}\label{_header_8c_ae2067b60cbad31c882af8308b4a93466}
 
-\begin{DoxyCompactList}\small\item\em eiler \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Дополнение для бесконечных пределов \end{DoxyCompactList}\item 
+void \hyperlink{_header_8c_ad298fd004f2757990173d3e65b462179}{mnk} (int n, double $\ast$x, double $\ast$y, double $\ast$a\+\_\+res, double $\ast$b\+\_\+res)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Файл с реализацией функций 
 
-Данный файл содержит в себе реализацию основных функций, используемых в демонстрационной программе 
+\begin{DoxyAuthor}{Author}
+Dmitry 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 Данный файл содержит в себе реализацию основных функций, используемых в демонстрационной программе 
+\end{DoxyVersion}
+
 
 \subsection{Function Documentation}
+\index{Header.\+c@{Header.\+c}!integral\+\_\+eiler@{integral\+\_\+eiler}}
+\index{integral\+\_\+eiler@{integral\+\_\+eiler}!Header.\+c@{Header.\+c}}
+\subsubsection[{\texorpdfstring{integral\+\_\+eiler(dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)}{integral_eiler(dfunction f, double x0, double x1, double y0, double *x, double *y, double h)}}]{\setlength{\rightskip}{0pt plus 5cm}void integral\+\_\+eiler (
+\begin{DoxyParamCaption}
+\item[{dfunction}]{f, }
+\item[{double}]{x0, }
+\item[{double}]{x1, }
+\item[{double}]{y0, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8c_acfff4de9ef4c06e7c81a318a580461be}{}\label{_header_8c_acfff4de9ef4c06e7c81a318a580461be}
+Решение задачи Коши методом Эйлера 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em x} & Выходной параметр \\
+\hline
+\mbox{\tt out}  & {\em y} & Значение функции \\
+\hline
+\mbox{\tt in}  & {\em f} & Входная функция \\
+\hline
+\mbox{\tt in}  & {\em x0} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em x1} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em y0} & Значение функции в точке x0 \\
+\hline
+\mbox{\tt in}  & {\em h} & Шаг сетки \\
+\hline
+\end{DoxyParams}
 \index{Header.\+c@{Header.\+c}!integral\+\_\+monte@{integral\+\_\+monte}}
 \index{integral\+\_\+monte@{integral\+\_\+monte}!Header.\+c@{Header.\+c}}
 \subsubsection[{\texorpdfstring{integral\+\_\+monte(function f, double a, double b, unsigned step\+\_\+count)}{integral_monte(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+monte (
@@ -47,11 +92,18 @@ void \hyperlink{_header_8c_acfff4de9ef4c06e7c81a318a580461be}{integral\+\_\+eile
 \item[{unsigned}]{step\+\_\+count}
 \end{DoxyParamCaption}
 )}\hypertarget{_header_8c_a8e5b7214541bc4cbf100fdaa512d5157}{}\label{_header_8c_a8e5b7214541bc4cbf100fdaa512d5157}
-
-
-monte-\/karlo 
-
-метод монте карло \index{Header.\+c@{Header.\+c}!integral\+\_\+pram@{integral\+\_\+pram}}
+Интегрирование методом Монте-\/Карло 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Интегрируемая функция \\
+\hline
+\mbox{\tt in}  & {\em a} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em b} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em step\+\_\+count} & Количество шагов \\
+\hline
+\end{DoxyParams}
+\index{Header.\+c@{Header.\+c}!integral\+\_\+pram@{integral\+\_\+pram}}
 \index{integral\+\_\+pram@{integral\+\_\+pram}!Header.\+c@{Header.\+c}}
 \subsubsection[{\texorpdfstring{integral\+\_\+pram(function f, double a, double b, unsigned step\+\_\+count)}{integral_pram(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+pram (
 \begin{DoxyParamCaption}
@@ -61,11 +113,78 @@ monte-\/karlo
 \item[{unsigned}]{step\+\_\+count}
 \end{DoxyParamCaption}
 )}\hypertarget{_header_8c_a442ce5da427a2a8927f9fee5d55bed44}{}\label{_header_8c_a442ce5da427a2a8927f9fee5d55bed44}
-
-
-rectangles 
-
-метод прямоугльников \index{Header.\+c@{Header.\+c}!integral\+\_\+simp@{integral\+\_\+simp}}
+Интегрирование методом прямоугольников 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Интегрируемая функция \\
+\hline
+\mbox{\tt in}  & {\em a} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em b} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em step\+\_\+count} & Количество шагов \\
+\hline
+\end{DoxyParams}
+\index{Header.\+c@{Header.\+c}!integral\+\_\+runge4@{integral\+\_\+runge4}}
+\index{integral\+\_\+runge4@{integral\+\_\+runge4}!Header.\+c@{Header.\+c}}
+\subsubsection[{\texorpdfstring{integral\+\_\+runge4(dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)}{integral_runge4(dfunction f, double x0, double x1, double y0, double *x, double *y, double h)}}]{\setlength{\rightskip}{0pt plus 5cm}void integral\+\_\+runge4 (
+\begin{DoxyParamCaption}
+\item[{dfunction}]{f, }
+\item[{double}]{x0, }
+\item[{double}]{x1, }
+\item[{double}]{y0, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8c_a0bfe57db004c7d569a34a7e192ad625c}{}\label{_header_8c_a0bfe57db004c7d569a34a7e192ad625c}
+Решение задачи Коши методом Рунге-\/Кутты 4ого порядка 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em x} & Выходной параметр \\
+\hline
+\mbox{\tt out}  & {\em y} & Значение функции \\
+\hline
+\mbox{\tt in}  & {\em f} & Входная функция \\
+\hline
+\mbox{\tt in}  & {\em x0} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em x1} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em y0} & Значение функции в точке x0 \\
+\hline
+\mbox{\tt in}  & {\em h} & Шаг сетки \\
+\hline
+\end{DoxyParams}
+\index{Header.\+c@{Header.\+c}!integral\+\_\+runge5@{integral\+\_\+runge5}}
+\index{integral\+\_\+runge5@{integral\+\_\+runge5}!Header.\+c@{Header.\+c}}
+\subsubsection[{\texorpdfstring{integral\+\_\+runge5(dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)}{integral_runge5(dfunction f, double x0, double x1, double y0, double *x, double *y, double h)}}]{\setlength{\rightskip}{0pt plus 5cm}void integral\+\_\+runge5 (
+\begin{DoxyParamCaption}
+\item[{dfunction}]{f, }
+\item[{double}]{x0, }
+\item[{double}]{x1, }
+\item[{double}]{y0, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8c_aa00382ea8791a5c37aad5ff4a65369e1}{}\label{_header_8c_aa00382ea8791a5c37aad5ff4a65369e1}
+Решение задачи Коши методом Рунге-\/Кутты 5ого порядка 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em x} & Выходной параметр \\
+\hline
+\mbox{\tt out}  & {\em y} & Значение функции \\
+\hline
+\mbox{\tt in}  & {\em f} & Входная функция \\
+\hline
+\mbox{\tt in}  & {\em x0} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em x1} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em y0} & Значение функции в точке x0 \\
+\hline
+\mbox{\tt in}  & {\em h} & Шаг сетки \\
+\hline
+\end{DoxyParams}
+\index{Header.\+c@{Header.\+c}!integral\+\_\+simp@{integral\+\_\+simp}}
 \index{integral\+\_\+simp@{integral\+\_\+simp}!Header.\+c@{Header.\+c}}
 \subsubsection[{\texorpdfstring{integral\+\_\+simp(function f, double a, double b, unsigned step\+\_\+count)}{integral_simp(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+simp (
 \begin{DoxyParamCaption}
@@ -75,11 +194,18 @@ rectangles
 \item[{unsigned}]{step\+\_\+count}
 \end{DoxyParamCaption}
 )}\hypertarget{_header_8c_a58180d08919889b0edd98aca322b29cb}{}\label{_header_8c_a58180d08919889b0edd98aca322b29cb}
-
-
-simpson 
-
-метод симпсона(парабол) \index{Header.\+c@{Header.\+c}!integral\+\_\+trap@{integral\+\_\+trap}}
+Интегрирование методом Симпсона 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Интегрируемая функция \\
+\hline
+\mbox{\tt in}  & {\em a} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em b} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em step\+\_\+count} & Количество шагов \\
+\hline
+\end{DoxyParams}
+\index{Header.\+c@{Header.\+c}!integral\+\_\+trap@{integral\+\_\+trap}}
 \index{integral\+\_\+trap@{integral\+\_\+trap}!Header.\+c@{Header.\+c}}
 \subsubsection[{\texorpdfstring{integral\+\_\+trap(function f, double a, double b, unsigned step\+\_\+count)}{integral_trap(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+trap (
 \begin{DoxyParamCaption}
@@ -89,8 +215,38 @@ simpson
 \item[{unsigned}]{step\+\_\+count}
 \end{DoxyParamCaption}
 )}\hypertarget{_header_8c_a864fb15dd1f73e3fc2b3cf0cc18354bb}{}\label{_header_8c_a864fb15dd1f73e3fc2b3cf0cc18354bb}
-
-
-trapeze 
-
-метод трапеций 
+Интегрирование методом трапеций 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em f} & Интегрируемая функция \\
+\hline
+\mbox{\tt in}  & {\em a} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em b} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em step\+\_\+count} & Количество шагов \\
+\hline
+\end{DoxyParams}
+\index{Header.\+c@{Header.\+c}!mnk@{mnk}}
+\index{mnk@{mnk}!Header.\+c@{Header.\+c}}
+\subsubsection[{\texorpdfstring{mnk(int n, double $\ast$x, double $\ast$y, double $\ast$a\+\_\+res, double $\ast$b\+\_\+res)}{mnk(int n, double *x, double *y, double *a_res, double *b_res)}}]{\setlength{\rightskip}{0pt plus 5cm}void mnk (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y, }
+\item[{double $\ast$}]{a\+\_\+res, }
+\item[{double $\ast$}]{b\+\_\+res}
+\end{DoxyParamCaption}
+)}\hypertarget{_header_8c_ad298fd004f2757990173d3e65b462179}{}\label{_header_8c_ad298fd004f2757990173d3e65b462179}
+Апроксимация таблично заданной функции методом наименьших квадратов (y=ax+b) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em a\+\_\+res} & Коэффициент a \\
+\hline
+\mbox{\tt out}  & {\em b\+\_\+res} & Коэффициент b \\
+\hline
+\mbox{\tt in}  & {\em n} & Количество заданных точек \\
+\hline
+\mbox{\tt in}  & {\em x} & Массив значений x\mbox{[}i\mbox{]} \\
+\hline
+\mbox{\tt in}  & {\em y} & Массив значений y\mbox{[}i\mbox{]} \\
+\hline
+\end{DoxyParams}
