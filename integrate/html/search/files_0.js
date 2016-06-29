@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['header_2ec',['Header.c',['../_header_8c.html',1,'']]],
-  ['header_2eh',['Header.h',['../_header_8h.html',1,'']]]
+  ['integrate_2ec',['Integrate.c',['../_integrate_8c.html',1,'']]],
+  ['integrate_2eh',['Integrate.h',['../_integrate_8h.html',1,'']]]
 ];
