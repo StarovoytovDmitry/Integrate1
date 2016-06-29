@@ -32,8 +32,14 @@ double df (double x, double y) {
 int main(int argc, const char * argv[]) {
     double a,b,c,d;
     double a1=0;
-    double x1[5]={-2,0,1,2,4}, y1[5]={0.5,1,1.5,2,3};//тест для мнк
     double x=0,y=0;
+    // тест для мнк
+    double x1[5]={-3,-1,0,1,3};
+    double y1[5]={-4,-0.8,1.6,2.3,1.5};
+    // тест для мнк 2
+    //double x2[5]={-2,0,1,2,4};
+    //double y2[5]={0.5,1,1.5,2,3};
+    double aa[3]={0,0,0};
     a=integral_pram(f, 1, 5, 100);
     b=integral_monte(f, 1, 5, 100);
     c=integral_trap(f, 1, 5, 100);
@@ -54,7 +60,7 @@ int main(int argc, const char * argv[]) {
     printf("%f\n",a1);
     a1=integral_simp_inf(f2, 1, 0, 0.1, 0.001);
     printf("%f\n",a1);
-    x=0,y=0;
-    mnk(5,x1,y1,&x,&y);
-    printf("mnk a=%f b=%f \n",x,y);
+    printf("mnk\n");
+    mnk(2, 5, x1, y1, aa);
+    for(int i=2;i>=0;i--) printf("%f \n", aa[i]);
 }

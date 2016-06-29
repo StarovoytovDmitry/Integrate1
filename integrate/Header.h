@@ -90,12 +90,14 @@ void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, do
  */
 void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h);
 /*!
- Апроксимация таблично заданной функции методом наименьших квадратов (y=ax+b)
- \param[out] a_res Коэффициент a
- \param[out] b_res Коэффициент b
+ Апроксимация таблично заданной функции методом наименьших квадратов
+ \param[out] a_res Массив выходных коэффициентов
  \param[in] n Количество заданных точек
  \param[in] x Массив значений x[i]
  \param[in] y Массив значений y[i]
+ \param[in] s Степень апроксимирующего полинома
  */
-void mnk(int n, double *x, double *y, double *a_res, double *b_res);
+void mnk(int s, int n, double *x, double *y, double *a_res[]);
+//Вспомогательная функция возведения числа t в степень k
+int power1(int t, int k);
 #endif /* Header_h */

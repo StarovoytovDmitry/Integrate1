@@ -27,7 +27,7 @@ double integral_pram(function f, double a, double b, unsigned step_count)
     if (a>b) {double c=b;b=a;a=c;}
     if (0 == step_count) return S;
     const double h=(b-a)/(1.0*step_count);
-    for(int i=0;i<step_count-1;i++)
+    for(unsigned int i=0;i<step_count-1;i++)
     {
         double x=a+i*h;
         S=S+f(x);
@@ -42,7 +42,7 @@ double integral_trap(function f, double a, double b, unsigned step_count)
     if (0 == step_count) return sum;
     
     const double step = (b - a)/(1.0*step_count);
-    for (int i = 1;i<step_count;++i) {
+    for (unsigned int i = 1;i<step_count;++i) {
         sum += f (a + i * step);
     }
     sum += (f(a) + f(b)) / 2;
@@ -59,7 +59,7 @@ double integral_simp(function f, double a, double b, unsigned step_count)
     x0 = a;
     x1 = a + h;
     
-    for (int i=0; i<=step_count-1; i++) {
+    for (unsigned int i=0; i<=step_count-1; i++) {
         sum += f(x0) + 4*f(x0 + h/2) + f(x1);
         
         x0 += h;
@@ -83,42 +83,38 @@ double integral_monte(function f, double a, double b, unsigned step_count)
 void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
     if (x0>x1) {double c=x1;x1=x0;x0=c;}
-    double k1,k2,k3,k4;
     const int n=(x1-x0)/h;
     int i=0;
     for(i=x0;i<n;i++)
     {
-        x0=i*h;
-        k1=h*f(x0, y0);
-        k2=h*f(x0+h/2, y0+k1/2);
-        k3=h*f(x0+h/2, y0+k2/2);
-        k4=h*f(x0+h, y0+k3);
-        double d=(k1+2*k2+2*k3+k4)/6;
+        const double xi=i*h;
+        const double k1=h*f(xi, y0);
+        const double k2=h*f(xi+h/2, y0+k1/2);
+        const double k3=h*f(xi+h/2, y0+k2/2);
+        const double k4=h*f(xi+h, y0+k3);
+        const double d=(k1+2*k2+2*k3+k4)/6;
         y0=y0+d;
     }
-    x0=i*h;
-    *x=x0;
+    *x=i*h;
     *y=y0;
 }
 void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
     if (x0>x1) {double c=x1;x1=x0;x0=c;}
-    double k1,k2,k3,k4,k5;
     const int n=(x1-x0)/h;
     int i=0;
     for(i=x0;i<n;i++)
     {
-        x0=i*h;
-        k1=h*f(x0, y0)/3;
-        k2=h*f(x0+h/3, y0+k1)/3;
-        k3=h*f(x0+h/3, y0+k1/2+k2/2)/3;
-        k4=h*f(x0+h/2, y0+3*k1/8+9*k3/8)/3;
-        k5=h*f(x0+h, y0+3*k1/2-9*k3/2+6*k4)/3;
-        double d=(k1+4*k4+k5)/2;
+        const double xi=i*h;
+        const double k1=h*f(xi, y0)/3;
+        const double k2=h*f(xi+h/3, y0+k1)/3;
+        const double k3=h*f(xi+h/3, y0+k1/2+k2/2)/3;
+        const double k4=h*f(xi+h/2, y0+3*k1/8+9*k3/8)/3;
+        const double k5=h*f(xi+h, y0+3*k1/2-9*k3/2+6*k4)/3;
+        const double d=(k1+4*k4+k5)/2;
         y0=y0+d;
     }
-    x0=i*h;
-    *x=x0;
+    *x=i*h;
     *y=y0;
 }
 void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
@@ -184,19 +180,67 @@ double integral_simp_inf(function f, double a, double b, double h, double eps)
     }
     return (h/6)*sum;
 }
-void mnk(int n, double *x, double *y, double *a_res, double *b_res)
+void mnk(int s, int n, double *x, double *y, double *a_res[])
 {
-    double xy_sum=.0,x2_sum=.0,x_sum=.0,y_sum=.0;
-    double a,b;
-    for (int i=0; i<5; i++)
+    double sums[n][n];
+    double b[n],a[n];
+    //упорядочиваем точки по возрастанию абсцисс
+    for(int i=0; i<n; i++)
+   	{
+        for(int j=i;j>=1;j--)
+            if(x[j]<x[j-1])
+            {
+                const double t=x[j-1]; x[j-1]=x[j]; x[j]=t;
+                const double t1=y[j-1]; y[j-1]=y[j]; y[j]=t1;
+            }
+   	}
+    //Заполняем коэффициенты системы уравнений
+   	for(int i=0; i<s+1; i++)
     {
-        x_sum += x[i];
-        y_sum += y[i];
-        xy_sum += x[i]*y[i];
-        x2_sum += x[i]*x[i];
+        for(int j=0; j<s+1; j++)
+        {
+            sums[i][j] = 0;
+            for(int k=0; k<n; k++)
+                sums[i][j]+=power1(x[k],i+j);
+        }
+   	}
+    //Заполняем столбец свободных членов
+    for(int i=0; i<s+1; i++)
+    {
+        b[i]=0;
+        for(int k=0; k<n; k++)
+            b[i] +=power1(x[k],i)*y[k];
     }
-    a=(n*xy_sum-x_sum*y_sum)/(n*x2_sum-x_sum*x_sum);
-    b=(y_sum-a*x_sum)/n;
-    *a_res=a;
-    *b_res=b;
+    //Применяем метод Гаусса для приведения матрицы системы к треугольному виду
+    for(int k=0; k<s+1; k++)
+    {
+        for(int i=k+1; i<s+1; i++)
+        {
+            const double M=sums[i][k]/sums[k][k];
+            for(int j=k; j<s+1; j++) sums[i][j] -= M * sums[k][j];
+            b[i] -= M*b[k];
+        }
+    }
+    //Вычисляем коэффициенты аппроксимирующего полинома
+    for(int i=s;i>=0;i--)
+    {
+        double s1=0;
+        for(int j=i; j<s+1; j++) s1+=sums[i][j]*a[j];
+            a[i] = (b[i]-s1)/sums[i][i];
+            printf("%f\n", a[i]);
+    }
+    for(int i=s;i>=0;i--) *a_res=&a[i];
+}
+// Вспомогательная функция возведения в степень
+int power1(int t, int k)
+{
+    int res = 1;
+    while (k)
+    {
+        if (k & 1)
+            res *= t;
+        t *= t;
+        k >>= 1;
+    }
+    return res;
 }
