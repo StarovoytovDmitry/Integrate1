@@ -1,13 +1,13 @@
 //
-//  Header.h
+//  Integrate.h
 //  integrate
 //
 //  Created by Дмитрий on 15.06.16.
 //  Copyright © 2016 Дмитрий. All rights reserved.
 //
 
-#ifndef Header_h
-#define Header_h
+#ifndef Integrate_h
+#define Integrate_h
 /*!
  \file
  \brief Заголовочный файл с описанием функций
@@ -100,4 +100,4 @@ void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, dou
 void mnk(int s, int n, double *x, double *y, double *a_res[]);
 //Вспомогательная функция возведения числа t в степень k
 int power1(int t, int k);
-#endif /* Header_h */
+#endif /* Integrate_h */

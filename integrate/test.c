@@ -16,7 +16,7 @@
  */
 
 #include <stdio.h>
-#include "Header.h"
+#include "Integrate.h"
 double f (double x) {
     return 2 * x;
 }

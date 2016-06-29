@@ -15,7 +15,7 @@
  функций, используемых в демонстрационной программе
  */
 
-#include "Header.h"
+#include "Integrate.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B7133C4D1D117DDA004F2234 /* Header.c in Sources */ = {isa = PBXBuildFile; fileRef = B7133C4C1D117DDA004F2234 /* Header.c */; };
+		B7133C4D1D117DDA004F2234 /* Integrate.c in Sources */ = {isa = PBXBuildFile; fileRef = B7133C4C1D117DDA004F2234 /* Integrate.c */; };
 		B7133C551D1198C1004F2234 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = B7133C541D1198C1004F2234 /* test.c */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		B7133C491D117DDA004F2234 /* integrate */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = integrate; sourceTree = BUILT_PRODUCTS_DIR; };
-		B7133C4C1D117DDA004F2234 /* Header.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Header.c; sourceTree = "<group>"; };
-		B7133C531D117E19004F2234 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		B7133C4C1D117DDA004F2234 /* Integrate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Integrate.c; sourceTree = "<group>"; };
+		B7133C531D117E19004F2234 /* Integrate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Integrate.h; sourceTree = "<group>"; };
 		B7133C541D1198C1004F2234 /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,8 +60,8 @@
 		B7133C4B1D117DDA004F2234 /* integrate */ = {
 			isa = PBXGroup;
 			children = (
-				B7133C4C1D117DDA004F2234 /* Header.c */,
-				B7133C531D117E19004F2234 /* Header.h */,
+				B7133C4C1D117DDA004F2234 /* Integrate.c */,
+				B7133C531D117E19004F2234 /* Integrate.h */,
 				B7133C541D1198C1004F2234 /* test.c */,
 			);
 			path = integrate;
@@ -123,7 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7133C4D1D117DDA004F2234 /* Header.c in Sources */,
+				B7133C4D1D117DDA004F2234 /* Integrate.c in Sources */,
 				B7133C551D1198C1004F2234 /* test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +245,7 @@
 				B7133C521D117DDA004F2234 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
