@@ -54,11 +54,11 @@ int main(int argc, const char * argv[]) {
     x=0,y=0;
     integral_eiler(df, 0, 1, 1, &x, &y, 0.1);
     printf("eiler x=%f y=%f \n",x,y);
-    a1=integral_pram_inf(f2, 1, 0, 0.1, 0.001);
+    a1=integral_pram_inf(f2, 1, 0.1, 0.001);
     printf("%f\n",a1);
-    a1=integral_trap_inf(f2, 1, 0, 0.1, 0.001);
+    a1=integral_trap_inf(f2, 1, 0.1, 0.001);
     printf("%f\n",a1);
-    a1=integral_simp_inf(f2, 1, 0, 0.1, 0.001);
+    a1=integral_simp_inf(f2, 1, 0.1, 0.001);
     printf("%f\n",a1);
     printf("mnk\n");
     mnk(2, 5, x1, y1, aa);

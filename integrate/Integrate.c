@@ -52,7 +52,7 @@ double integral_trap(function f, double a, double b, unsigned step_count)
 double integral_simp(function f, double a, double b, unsigned step_count)
 {
     if (a>b) {double c=b;b=a;a=c;}
-    double sum,x0,x1;
+    double sum=0,x0,x1;
     if (0 == step_count) return sum;
     const double h = (b - a)/(1.0*step_count);
     sum = 0;
@@ -129,7 +129,7 @@ void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, dou
     *x=x0;
     *y=y0;
 }
-double integral_pram_inf(function f, double a, double b, double h, double eps)
+double integral_pram_inf(function f, double a, double h, double eps)
 {
     double dS=eps,S=.0,s1=.0,a1=a;
     if (eps == 0) return S;
@@ -146,7 +146,7 @@ double integral_pram_inf(function f, double a, double b, double h, double eps)
     S=h*S;
     return S;
 }
-double integral_trap_inf(function f, double a, double b, double h, double eps)
+double integral_trap_inf(function f, double a, double h, double eps)
 {
     double sum = .0,a1=a,dS=eps, s1=.0;
     if (eps == 0) return sum;
@@ -165,7 +165,7 @@ double integral_trap_inf(function f, double a, double b, double h, double eps)
     sum *= h;
     return sum;
 }
-double integral_simp_inf(function f, double a, double b, double h, double eps)
+double integral_simp_inf(function f, double a, double h, double eps)
 {
     double sum = 0,x0 = a,x1,dS=eps, s1=.0;
     if (eps == 0) return sum;
