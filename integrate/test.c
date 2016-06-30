@@ -52,6 +52,9 @@ int main(int argc, const char * argv[]) {
     integral_runge5(df, 0, 1, 1, &x, &y, 0.1);
     printf("runge5 x=%f y=%f \n",x,y);
     x=0,y=0;
+    integral_runge78(df, 0, 1, 1, &x, &y, 0.01);
+    printf("runge78 x=%f y=%f \n",x,y);
+    x=0,y=0;
     integral_eiler(df, 0, 1, 1, &x, &y, 0.1);
     printf("eiler x=%f y=%f \n",x,y);
     a1=integral_pram_inf(f2, 1, 0.1, 0.001);
@@ -61,6 +64,6 @@ int main(int argc, const char * argv[]) {
     a1=integral_simp_inf(f2, 1, 0.1, 0.001);
     printf("%f\n",a1);
     printf("mnk\n");
-    mnk(2, 5, x1, y1, aa);
+    mnk(2, 5, x1, y1,(double*) aa);
     for(int i=2;i>=0;i--) printf("%f \n", aa[i]);
 }

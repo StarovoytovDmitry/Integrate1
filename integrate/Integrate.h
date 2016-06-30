@@ -79,6 +79,17 @@ void integral_runge4(dfunction f, double x0, double x1, double y0, double* x, do
  */
 void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, double* y, double h);
 /*!
+ Решение задачи Коши методом Рунге-Кутты 7ого порядка
+ \param[out] x Выходной параметр
+ \param[out] y Значение функции
+ \param[in] f Входная функция
+ \param[in] x0 Начало интервала
+ \param[in] x1 Конец интервала
+ \param[in] y0 Значение функции в точке x0
+ \param[in] h Шаг сетки
+ */
+void integral_runge78(dfunction f, double x0, double x1, double y0, double* x, double* y, double h);
+/*!
  Решение задачи Коши методом Эйлера
  \param[out] x Выходной параметр
  \param[out] y Значение функции
@@ -97,7 +108,7 @@ void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, dou
  \param[in] y Массив значений y[i]
  \param[in] s Степень апроксимирующего полинома
  */
-void mnk(int s, int n, double *x, double *y, double *a_res[]);
+void mnk(int s, int n, double *x, double *y, double *a_res);
 //Вспомогательная функция возведения числа t в степень k
 int power1(int t, int k);
 #endif /* Integrate_h */

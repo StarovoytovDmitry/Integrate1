@@ -117,6 +117,31 @@ void integral_runge5(dfunction f, double x0, double x1, double y0, double* x, do
     *x=i*h;
     *y=y0;
 }
+void integral_runge78(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
+{
+    if (x0>x1) {double c=x1;x1=x0;x0=c;}
+    const int n=(x1-x0)/h;
+    int i=0;
+    for(i=x0;i<n;i++)
+    {
+        const double xi=i*h;
+        double k[11];
+        k[0] = h * f(xi, y0);
+        k[1] = h * f(xi + 2.0 / 27.0 * h, y0 + 2.0 / 27.0 * k[0]);
+        k[2] = h * f(xi + 1.0 / 9.0 * h, y0 + 1.0 / 36.0 * k[0] + 1.0 / 12.0 * k[1]);
+        k[3] = h * f(xi + 1.0 / 6.0 * h, y0 + 1.0 / 24.0 * k[0] + 1.0 / 8.0 * k[2]);
+        k[4] = h * f(xi + 5.0 / 12.0 * h, y0 + 5.0 / 12.0 * k[0] - 25.0 / 16.0 * k[2] + 25.0 / 16.0 * k[3]);
+        k[5] = h * f(xi + 1.0 / 2.0 * h, y0 + 1.0 / 20.0 * k[0] + 1.0 / 4.0 * k[3] + 1.0 / 5.0 * k[4]);
+        k[6] = h * f(xi + 5.0 / 6.0 * h, y0 - 25.0 / 508.0 * k[0] + 125.0 / 508.0 * k[3] - 65.0 / 27.0 * k[4] + 125.0 / 54.0 * k[5]);
+        k[7] = h * f(xi + 1.0 / 6.0 * h, y0 + 31.0 / 300.0 * k[0] + 61.0 / 225.0 * k[4] - 2.0 / 9.0 * k[5] + 13.0 / 900.0 * k[6]);
+        k[8] = h * f(xi + 2.0 / 3.0 * h, y0 + 2.0 * k[0] - 53.0 / 6.0 * k[3] + 704.0 / 45.0 * k[4] - 107.0 / 9.0 * k[5] + 67.0 / 90.0 * k[6] + 3 * k[7]);
+        k[9] = h * f(xi + 1.0 / 3.0 * h, y0 - 91.0 / 108.0 * k[0] + 23.0 / 108.0 * k[3] - 976.0 / 135.0 * k[4] + 311.0 / 54.0 * k[5] - 19.0 / 60.0 * k[6] + 17.0 / 6.0 * k[7] - 1.0 / 12.0 * k[8]);
+        k[10] = h * f(xi + h, y0 + 2383.0 / 4100.0 * k[0] - 341.0 / 164.0 * k[3] + 4496.0 / 1025.0 * k[4] - 301.0 / 82.0 * k[5] + 2133.0 / 4100.0 * k[6] + 45.0 / 82.0 * k[7] + 45.0 / 164.0 * k[8] + 18.0 / 49.0 * k[9]);
+        y0 = y0 + 41.0 / 840.0 * k[0] + 34.0 / 105.0 * k[1] + 9.0 / 35.0 * (k[6] + k[7]) + 9.0 / 280.0 * (k[8] + k[9]) + 41.0 / 840.0 * k[10];
+    }
+    *x=i*h;
+    *y=y0;
+}
 void integral_eiler(dfunction f, double x0, double x1, double y0, double* x, double* y, double h)
 {
     if (x0>x1) {double c=x1;x1=x0;x0=c;}
@@ -180,7 +205,7 @@ double integral_simp_inf(function f, double a, double h, double eps)
     }
     return (h/6)*sum;
 }
-void mnk(int s, int n, double *x, double *y, double *a_res[])
+void mnk(int s, int n, double *x, double *y, double *a_res)
 {
     double sums[n][n];
     double b[n],a[n];
@@ -227,9 +252,9 @@ void mnk(int s, int n, double *x, double *y, double *a_res[])
         double s1=0;
         for(int j=i; j<s+1; j++) s1+=sums[i][j]*a[j];
             a[i] = (b[i]-s1)/sums[i][i];
-            printf("%f\n", a[i]);
+            //printf("%f\n", a[i]);
     }
-    for(int i=s;i>=0;i--) *a_res=&a[i];
+    for(int i=s;i>=0;i--) a_res[i]=a[i];
 }
 // Вспомогательная функция возведения в степень
 int power1(int t, int k)
