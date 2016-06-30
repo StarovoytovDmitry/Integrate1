@@ -38,9 +38,11 @@ void \hyperlink{_integrate_8h_a0bfe57db004c7d569a34a7e192ad625c}{integral\+\_\+r
 \item 
 void \hyperlink{_integrate_8h_aa00382ea8791a5c37aad5ff4a65369e1}{integral\+\_\+runge5} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)
 \item 
+void \hyperlink{_integrate_8h_a6c56ea6eb219caeb8d40bac3aa13bbb5}{integral\+\_\+runge78} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)
+\item 
 void \hyperlink{_integrate_8h_acfff4de9ef4c06e7c81a318a580461be}{integral\+\_\+eiler} (dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)
 \item 
-void \hyperlink{_integrate_8h_a1f74296c7602ff7987cccbf998ba44d6}{mnk} (int s, int n, double $\ast$x, double $\ast$y, double $\ast$a\+\_\+res\mbox{[}$\,$\mbox{]})
+void \hyperlink{_integrate_8h_ae7dca3cad1a5b00877f7886bf12af0cf}{mnk} (int s, int n, double $\ast$x, double $\ast$y, double $\ast$a\+\_\+res)
 \item 
 int {\bfseries power1} (int t, int k)\hypertarget{_integrate_8h_a3e2aeb4dc7a537b760e49b6346709448}{}\label{_integrate_8h_a3e2aeb4dc7a537b760e49b6346709448}
 
@@ -191,6 +193,36 @@ Dmitry
 \mbox{\tt in}  & {\em h} & Шаг сетки \\
 \hline
 \end{DoxyParams}
+\index{Integrate.\+h@{Integrate.\+h}!integral\+\_\+runge78@{integral\+\_\+runge78}}
+\index{integral\+\_\+runge78@{integral\+\_\+runge78}!Integrate.\+h@{Integrate.\+h}}
+\subsubsection[{\texorpdfstring{integral\+\_\+runge78(dfunction f, double x0, double x1, double y0, double $\ast$x, double $\ast$y, double h)}{integral_runge78(dfunction f, double x0, double x1, double y0, double *x, double *y, double h)}}]{\setlength{\rightskip}{0pt plus 5cm}void integral\+\_\+runge78 (
+\begin{DoxyParamCaption}
+\item[{dfunction}]{f, }
+\item[{double}]{x0, }
+\item[{double}]{x1, }
+\item[{double}]{y0, }
+\item[{double $\ast$}]{x, }
+\item[{double $\ast$}]{y, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)}\hypertarget{_integrate_8h_a6c56ea6eb219caeb8d40bac3aa13bbb5}{}\label{_integrate_8h_a6c56ea6eb219caeb8d40bac3aa13bbb5}
+Решение задачи Коши методом Рунге-\/Кутты 7ого порядка 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em x} & Выходной параметр \\
+\hline
+\mbox{\tt out}  & {\em y} & Значение функции \\
+\hline
+\mbox{\tt in}  & {\em f} & Входная функция \\
+\hline
+\mbox{\tt in}  & {\em x0} & Начало интервала \\
+\hline
+\mbox{\tt in}  & {\em x1} & Конец интервала \\
+\hline
+\mbox{\tt in}  & {\em y0} & Значение функции в точке x0 \\
+\hline
+\mbox{\tt in}  & {\em h} & Шаг сетки \\
+\hline
+\end{DoxyParams}
 \index{Integrate.\+h@{Integrate.\+h}!integral\+\_\+simp@{integral\+\_\+simp}}
 \index{integral\+\_\+simp@{integral\+\_\+simp}!Integrate.\+h@{Integrate.\+h}}
 \subsubsection[{\texorpdfstring{integral\+\_\+simp(function f, double a, double b, unsigned step\+\_\+count)}{integral_simp(function f, double a, double b, unsigned step_count)}}]{\setlength{\rightskip}{0pt plus 5cm}double integral\+\_\+simp (
@@ -235,15 +267,15 @@ Dmitry
 \end{DoxyParams}
 \index{Integrate.\+h@{Integrate.\+h}!mnk@{mnk}}
 \index{mnk@{mnk}!Integrate.\+h@{Integrate.\+h}}
-\subsubsection[{\texorpdfstring{mnk(int s, int n, double $\ast$x, double $\ast$y, double $\ast$a\+\_\+res[])}{mnk(int s, int n, double *x, double *y, double *a_res[])}}]{\setlength{\rightskip}{0pt plus 5cm}void mnk (
+\subsubsection[{\texorpdfstring{mnk(int s, int n, double $\ast$x, double $\ast$y, double $\ast$a\+\_\+res)}{mnk(int s, int n, double *x, double *y, double *a_res)}}]{\setlength{\rightskip}{0pt plus 5cm}void mnk (
 \begin{DoxyParamCaption}
 \item[{int}]{s, }
 \item[{int}]{n, }
 \item[{double $\ast$}]{x, }
 \item[{double $\ast$}]{y, }
-\item[{double $\ast$}]{a\+\_\+res\mbox{[}$\,$\mbox{]}}
+\item[{double $\ast$}]{a\+\_\+res}
 \end{DoxyParamCaption}
-)}\hypertarget{_integrate_8h_a1f74296c7602ff7987cccbf998ba44d6}{}\label{_integrate_8h_a1f74296c7602ff7987cccbf998ba44d6}
+)}\hypertarget{_integrate_8h_ae7dca3cad1a5b00877f7886bf12af0cf}{}\label{_integrate_8h_ae7dca3cad1a5b00877f7886bf12af0cf}
 Апроксимация таблично заданной функции методом наименьших квадратов 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt out}  & {\em a\+\_\+res} & Массив выходных коэффициентов \\
